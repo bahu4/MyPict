@@ -8,7 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import ru.bahu.mypict.data.Data
 import ru.bahu.mypict.data.DataList
 
-class MainAdapter : RecyclerView.Adapter<MainAdapter.RecyclerItemViewHolder>() {
+class MainAdapter(private var onItemClickListener: OnItemClickListener) :
+    RecyclerView.Adapter<MainAdapter.RecyclerItemViewHolder>() {
     var list = DataList.getList()
 
     override fun onCreateViewHolder(
@@ -25,10 +26,19 @@ class MainAdapter : RecyclerView.Adapter<MainAdapter.RecyclerItemViewHolder>() {
 
     override fun getItemCount() = list.size
 
-    class RecyclerItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var tv = itemView.findViewById<TextView>(R.id.text_header)
+    inner class RecyclerItemViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        private var tv = view.findViewById<TextView>(R.id.text_header)
         fun bind(data: Data) {
             tv.text = data.title
+            tv.setOnClickListener { showToast(data) }
         }
+    }
+
+    private fun showToast(data: Data) {
+        onItemClickListener.onItemClick(data)
+    }
+
+    interface OnItemClickListener {
+        fun onItemClick(data: Data)
     }
 }
