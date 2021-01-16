@@ -27,10 +27,10 @@ class MainAdapter(private var onItemClickListener: OnItemClickListener) :
     override fun getItemCount() = list.size
 
     inner class RecyclerItemViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        private var tv = view.findViewById<TextView>(R.id.text_header)
+        private var picturesView = view.findViewById<TextView>(R.id.picture_item)
         fun bind(data: Data) {
-            tv.text = data.title
-            tv.setOnClickListener { showToast(data) }
+            picturesView.text = data.title
+            picturesView.setOnClickListener { showToast(data) }
         }
     }
 

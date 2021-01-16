@@ -24,6 +24,5 @@ class MainActivity : AppCompatActivity() {
         mainAdapter = MainAdapter(onItemClickListener)
         mainRV.adapter = mainAdapter
         mainRV.layoutManager = LinearLayoutManager(applicationContext)
-
     }
 }
