@@ -1,16 +1,22 @@
 package ru.bahu.mypict
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
-import ru.bahu.mypict.data.Data
-import ru.bahu.mypict.data.DataList
 
-class MainAdapter(private var onItemClickListener: OnItemClickListener) :
+import ru.bahu.mypict.glide.GlideLoader
+import ru.bahu.mypict.gson.TopPicture
+
+class MainAdapter(
+//    private var onItemClickListener: OnItemClickListener,
+    var context: Context,
+    var pictures: List<TopPicture>
+) :
     RecyclerView.Adapter<MainAdapter.RecyclerItemViewHolder>() {
-    var list = DataList.getList()
+    var glideLoader = GlideLoader()
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -21,24 +27,23 @@ class MainAdapter(private var onItemClickListener: OnItemClickListener) :
     )
 
     override fun onBindViewHolder(holder: RecyclerItemViewHolder, position: Int) {
-        holder.bind(list[position])
+        holder.bind(pictures[position])
     }
 
-    override fun getItemCount() = list.size
+    override fun getItemCount() = pictures.size
 
     inner class RecyclerItemViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        private var picturesView = view.findViewById<TextView>(R.id.picture_item)
-        fun bind(data: Data) {
-            picturesView.text = data.title
-            picturesView.setOnClickListener { showToast(data) }
+        private var picturesView = view.findViewById<ImageView>(R.id.picture_item)
+
+        fun bind(data: TopPicture) {
+            glideLoader.loadPicture(context, data.webformatURL, picturesView)
         }
-    }
 
-    private fun showToast(data: Data) {
-        onItemClickListener.onItemClick(data)
-    }
-
-    interface OnItemClickListener {
-        fun onItemClick(data: Data)
+//    private fun showToast(data: Data) {
+//        onItemClickListener.onItemClick(data)
+//    }
+//
+//    interface OnItemClickListener {
+//        fun onItemClick(data: Data)
     }
 }

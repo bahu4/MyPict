@@ -2,27 +2,32 @@ package ru.bahu.mypict
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import ru.bahu.mypict.data.Data
+import ru.bahu.mypict.gson.TopPicture
 
-class MainActivity : AppCompatActivity() {
-    private var mainAdapter: MainAdapter? = null
-    private lateinit var mainRV: RecyclerView
-    private val onItemClickListener: MainAdapter.OnItemClickListener =
-        object : MainAdapter.OnItemClickListener {
-            override fun onItemClick(data: Data) {
-                Toast.makeText(this@MainActivity, data.title, Toast.LENGTH_SHORT).show()
-            }
-        }
+class MainActivity : AppCompatActivity(), MainView {
+
+//    private val onItemClickListener: MainAdapter.OnItemClickListener =
+//        object : MainAdapter.OnItemClickListener {
+//            override fun onItemClick(data: Data) {
+//                Toast.makeText(this@MainActivity, data.title, Toast.LENGTH_SHORT).show()
+//            }
+//        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        mainRV = findViewById(R.id.main_rv)
-        mainAdapter = MainAdapter(onItemClickListener)
-        mainRV.adapter = mainAdapter
-        mainRV.layoutManager = LinearLayoutManager(applicationContext)
+        val mainPresenter = MainPresenter(this)
+        mainPresenter.getPictureList()
+    }
+
+    override fun renderData(data: List<TopPicture>) {
+
+        val mainRV = findViewById<RecyclerView>(R.id.main_rv)
+        val adapter = MainAdapter(this, data)
+        mainRV.adapter = adapter
+        mainRV.layoutManager = GridLayoutManager(this, 2)
+
     }
 }
