@@ -10,7 +10,12 @@ import ru.bahu.mypict.retrofit.ApiService
 
 @InjectViewState
 class MainPresenter : MvpPresenter<MainView>() {
-    fun getPictureList() {
+    override fun onFirstViewAttach() {
+        super.onFirstViewAttach()
+        getPictureList()
+    }
+
+    private fun getPictureList() {
         val single: Observable<Hits> = ApiService.requestServer()
         val disposable: Disposable = single
             .observeOn(AndroidSchedulers.mainThread())

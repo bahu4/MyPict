@@ -1,6 +1,5 @@
 package ru.bahu.mypict
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +11,6 @@ import ru.bahu.mypict.gson.TopPicture
 
 class MainAdapter(
     private var onItemClickListener: OnItemClickListener,
-    var context: Context,
     var pictures: List<TopPicture>
 ) :
     RecyclerView.Adapter<MainAdapter.RecyclerItemViewHolder>() {
@@ -36,7 +34,7 @@ class MainAdapter(
         private var picturesView = view.findViewById<ImageView>(R.id.picture_item)
 
         fun bind(data: TopPicture) {
-            glideLoader.loadPicture(context, data.webformatURL, picturesView)
+            glideLoader.loadPicture(itemView.context, data.webformatURL, picturesView)
             itemView.setOnClickListener { showToast(data) }
         }
     }
