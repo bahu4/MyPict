@@ -11,7 +11,7 @@ import ru.bahu.mypict.glide.GlideLoader
 import ru.bahu.mypict.gson.TopPicture
 
 class MainAdapter(
-//    private var onItemClickListener: OnItemClickListener,
+    private var onItemClickListener: OnItemClickListener,
     var context: Context,
     var pictures: List<TopPicture>
 ) :
@@ -37,13 +37,15 @@ class MainAdapter(
 
         fun bind(data: TopPicture) {
             glideLoader.loadPicture(context, data.webformatURL, picturesView)
+            itemView.setOnClickListener { showToast(data) }
         }
+    }
 
-//    private fun showToast(data: Data) {
-//        onItemClickListener.onItemClick(data)
-//    }
-//
-//    interface OnItemClickListener {
-//        fun onItemClick(data: Data)
+    private fun showToast(picture: TopPicture) {
+        onItemClickListener.onItemClick(picture)
+    }
+
+    interface OnItemClickListener {
+        fun onItemClick(picture: TopPicture)
     }
 }
