@@ -6,13 +6,19 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import moxy.MvpAppCompatActivity
 import moxy.presenter.InjectPresenter
+import moxy.presenter.ProvidePresenter
 import ru.bahu.mypict.app.App
 import ru.bahu.mypict.gson.TopPicture
+import javax.inject.Inject
 
 class MainActivity : MvpAppCompatActivity(), MainView {
 
+    @Inject
     @InjectPresenter
     lateinit var mainPresenter: MainPresenter
+
+    @ProvidePresenter
+    fun providePresenter(): MainPresenter = mainPresenter
 
     private val onItemClickListener: MainAdapter.OnItemClickListener =
         object : MainAdapter.OnItemClickListener {
