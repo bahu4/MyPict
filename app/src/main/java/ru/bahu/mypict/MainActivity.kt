@@ -6,9 +6,11 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import moxy.MvpAppCompatActivity
 import moxy.presenter.InjectPresenter
+import ru.bahu.mypict.app.App
 import ru.bahu.mypict.gson.TopPicture
 
 class MainActivity : MvpAppCompatActivity(), MainView {
+
     @InjectPresenter
     lateinit var mainPresenter: MainPresenter
 
@@ -20,6 +22,7 @@ class MainActivity : MvpAppCompatActivity(), MainView {
         }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        App.appComponent.inject(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
     }
