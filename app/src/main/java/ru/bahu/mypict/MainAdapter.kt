@@ -10,11 +10,11 @@ import ru.bahu.mypict.glide.GlideLoader
 import ru.bahu.mypict.gson.TopPicture
 
 class MainAdapter(
+    private var glideLoader: GlideLoader,
     private var onItemClickListener: OnItemClickListener,
-    var pictures: List<TopPicture>
+    private var pictures: List<TopPicture>
 ) :
     RecyclerView.Adapter<MainAdapter.RecyclerItemViewHolder>() {
-    var glideLoader = GlideLoader()
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -35,11 +35,11 @@ class MainAdapter(
 
         fun bind(data: TopPicture) {
             glideLoader.loadPicture(itemView.context, data.webformatURL, picturesView)
-            itemView.setOnClickListener { showToast(data) }
+            itemView.setOnClickListener { startDescriptionActivity(data) }
         }
     }
 
-    private fun showToast(picture: TopPicture) {
+    private fun startDescriptionActivity(picture: TopPicture) {
         onItemClickListener.onItemClick(picture)
     }
 
