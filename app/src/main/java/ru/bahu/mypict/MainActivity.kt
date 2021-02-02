@@ -28,9 +28,13 @@ class MainActivity : MvpAppCompatActivity(), MainView {
     private val onItemClickListener: MainAdapter.OnItemClickListener =
         object : MainAdapter.OnItemClickListener {
             override fun onItemClick(picture: TopPicture) {
-                val intent = Intent(this@MainActivity, DescriptionActivity::class.java)
+                val intent = Intent(this@MainActivity, DetailActivity::class.java)
                 intent.putExtra("URL", picture.webformatURL)
                 startActivity(intent)
+            }
+
+            override fun addToFavoritesClick(picture: TopPicture) {
+                Toast.makeText(this@MainActivity,"123", Toast.LENGTH_SHORT).show()
             }
         }
 

@@ -3,6 +3,7 @@ package ru.bahu.mypict
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CheckBox
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 
@@ -32,10 +33,16 @@ class MainAdapter(
 
     inner class RecyclerItemViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private var picturesView = view.findViewById<ImageView>(R.id.picture_item)
+        private var addToDBCheckBox = view.findViewById<CheckBox>(R.id.add_to_db_box)
 
         fun bind(data: TopPicture) {
             glideLoader.loadPicture(itemView.context, data.webformatURL, picturesView)
-            itemView.setOnClickListener { startDescriptionActivity(data) }
+            picturesView.setOnClickListener { startDescriptionActivity(data) }
+            addToDBCheckBox.setOnCheckedChangeListener { _, isChecked ->
+                if (isChecked) {
+                    addPictureToFavorites(data)
+                }
+            }
         }
     }
 
@@ -43,7 +50,12 @@ class MainAdapter(
         onItemClickListener.onItemClick(picture)
     }
 
+    private fun addPictureToFavorites(picture: TopPicture) {
+        onItemClickListener.addToFavoritesClick(picture)
+    }
+
     interface OnItemClickListener {
         fun onItemClick(picture: TopPicture)
+        fun addToFavoritesClick(picture: TopPicture)
     }
 }
