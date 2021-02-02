@@ -8,8 +8,8 @@ import io.reactivex.Single
 @Dao
 interface FavoritesDao {
     @Query("SELECT * FROM favorite_pictures")
-    fun selectAllFromDB(): Single<List<FavoritesEntity>>
+    fun getAllFromDB(): Single<List<FavoritesEntity>>
 
     @Insert
-    fun insert(entity: FavoritesEntity)
+    fun insert(entity: FavoritesEntity): Single<String>
 }

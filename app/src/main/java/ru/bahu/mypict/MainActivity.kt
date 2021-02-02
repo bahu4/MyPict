@@ -34,6 +34,7 @@ class MainActivity : MvpAppCompatActivity(), MainView {
             }
 
             override fun addToFavoritesClick(picture: TopPicture) {
+                mainPresenter.addToDB(picture)
                 Toast.makeText(this@MainActivity,"123", Toast.LENGTH_SHORT).show()
             }
         }
