@@ -17,6 +17,7 @@ import javax.inject.Inject
 class MainPresenter @Inject constructor(private val repositoryImpl: RepositoryImpl) :
     MvpPresenter<MainView>() {
 
+    @Inject
     lateinit var favoritesDao: FavoritesDao
 
     override fun onFirstViewAttach() {
