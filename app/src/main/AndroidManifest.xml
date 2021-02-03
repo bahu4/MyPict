@@ -15,7 +15,8 @@
         android:theme="@style/Theme.MyPict"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".DetailActivity"></activity>
+        <activity android:name=".FavoritesActivity"></activity>
+        <activity android:name=".DetailActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

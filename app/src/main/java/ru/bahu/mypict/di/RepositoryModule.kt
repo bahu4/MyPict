@@ -18,4 +18,6 @@ class RepositoryModule {
     @Provides
     @Singleton
     internal fun provideFavoriteDao(): FavoritesDao = App.appDatabase.favoritesDao()
+
+
 }
