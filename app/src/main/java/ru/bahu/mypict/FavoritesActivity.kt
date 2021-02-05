@@ -31,6 +31,10 @@ class FavoritesActivity : MvpAppCompatActivity(), FavoritesView {
                 intent.putExtra("URL", picture?.url)
                 startActivity(intent)
             }
+
+            override fun deleteItemFromFavoriteClick(picture: FavoritesEntity?) {
+                favoritesPresenter.deletePicturesFromDataBase(picture)
+            }
         }
 
     override fun onCreate(savedInstanceState: Bundle?) {

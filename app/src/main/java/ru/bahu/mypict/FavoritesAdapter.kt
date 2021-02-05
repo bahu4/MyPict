@@ -30,6 +30,7 @@ class FavoritesAdapter(
         fun bind(data: FavoritesEntity?) {
             glideLoader.loadPicture(itemView.context, data?.url, favoritesItem)
             favoritesItem.setOnClickListener { startDescriptionActivityFromFavoriteActivity(data) }
+            favoritesItem.setOnLongClickListener { deleteItemFromDataBase(data) }
         }
     }
 
@@ -37,7 +38,13 @@ class FavoritesAdapter(
         onFavoriteItemClickListener.onFavoriteItemClick(picture)
     }
 
+    private fun deleteItemFromDataBase(picture: FavoritesEntity?): Boolean {
+        onFavoriteItemClickListener.deleteItemFromFavoriteClick(picture)
+        return true
+    }
+
     interface OnFavoriteItemClickListener {
         fun onFavoriteItemClick(picture: FavoritesEntity?)
+        fun deleteItemFromFavoriteClick(picture: FavoritesEntity?)
     }
 }

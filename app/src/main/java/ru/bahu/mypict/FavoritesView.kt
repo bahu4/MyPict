@@ -3,7 +3,6 @@ package ru.bahu.mypict
 import moxy.MvpView
 import moxy.viewstate.strategy.AddToEndStrategy
 import moxy.viewstate.strategy.StateStrategyType
-import ru.bahu.mypict.gson.TopPicture
 import ru.bahu.mypict.room.FavoritesEntity
 
 interface FavoritesView: MvpView {

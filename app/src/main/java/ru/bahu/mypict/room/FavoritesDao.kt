@@ -1,9 +1,6 @@
 package ru.bahu.mypict.room
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import io.reactivex.Completable
 import io.reactivex.Observable
 import io.reactivex.Single
@@ -15,4 +12,7 @@ interface FavoritesDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(entity: FavoritesEntity): Completable
+
+    @Delete
+    fun deleteElementFromDB(entity: FavoritesEntity?): Completable
 }
