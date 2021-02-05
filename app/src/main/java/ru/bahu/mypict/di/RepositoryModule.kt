@@ -5,7 +5,6 @@ import dagger.Provides
 import ru.bahu.mypict.app.App
 import ru.bahu.mypict.datasource.DataSource
 import ru.bahu.mypict.gson.Hits
-import ru.bahu.mypict.gson.TopPicture
 import ru.bahu.mypict.retrofit.RetrofitImpl
 import ru.bahu.mypict.room.FavoritesDao
 import javax.inject.Singleton

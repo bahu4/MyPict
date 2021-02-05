@@ -9,7 +9,6 @@ import moxy.presenter.InjectPresenter
 import moxy.presenter.ProvidePresenter
 import ru.bahu.mypict.app.App
 import ru.bahu.mypict.glide.GlideLoader
-import ru.bahu.mypict.gson.TopPicture
 import ru.bahu.mypict.room.FavoritesEntity
 import javax.inject.Inject
 

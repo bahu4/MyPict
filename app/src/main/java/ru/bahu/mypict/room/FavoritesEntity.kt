@@ -7,6 +7,5 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "favorite_pictures")
 class FavoritesEntity(
     @field:PrimaryKey
-//    @field:ColumnInfo(name = "id") var id: Int,
     @field:ColumnInfo(name = "url") var url: String
 )

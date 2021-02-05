@@ -28,12 +28,13 @@ class FavoritesPresenter @Inject constructor(private val favoritesDao: Favorites
             )
     }
 
-     fun deletePicturesFromDataBase(picture: FavoritesEntity?) {
-        var disposable: Disposable = favoritesDao.deleteElementFromDB(picture).subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread()).subscribe({
-                getPicturesFromDataBase()
-            },{
-                it.printStackTrace()
-            })
+    fun deletePicturesFromDataBase(picture: FavoritesEntity?) {
+        var disposable: Disposable =
+            favoritesDao.deleteElementFromDB(picture).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread()).subscribe({
+                    getPicturesFromDataBase()
+                }, {
+                    it.printStackTrace()
+                })
     }
 }

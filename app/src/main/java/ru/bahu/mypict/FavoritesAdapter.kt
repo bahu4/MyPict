@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import ru.bahu.mypict.glide.GlideLoader
-import ru.bahu.mypict.gson.TopPicture
 import ru.bahu.mypict.room.FavoritesEntity
 
 class FavoritesAdapter(
