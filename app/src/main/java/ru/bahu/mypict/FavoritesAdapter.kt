@@ -7,10 +7,12 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import ru.bahu.mypict.glide.GlideLoader
 import ru.bahu.mypict.gson.TopPicture
+import ru.bahu.mypict.room.FavoritesEntity
 
 class FavoritesAdapter(
     private var glideLoader: GlideLoader,
-    private var picture: List<TopPicture>
+    private var onFavoriteItemClickListener: OnFavoriteItemClickListener,
+    private var picture: List<FavoritesEntity>?
 ) : RecyclerView.Adapter<FavoritesAdapter.RecyclerFavoriteItemHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerFavoriteItemHolder =
         RecyclerFavoriteItemHolder(
@@ -18,15 +20,24 @@ class FavoritesAdapter(
         )
 
     override fun onBindViewHolder(holder: RecyclerFavoriteItemHolder, position: Int) {
-        holder.bind(picture[position])
+        holder.bind(picture?.get(position))
     }
 
-    override fun getItemCount(): Int = picture.size
+    override fun getItemCount(): Int = picture?.size ?: 0
 
     inner class RecyclerFavoriteItemHolder(view: View) : RecyclerView.ViewHolder(view) {
         private var favoritesItem = view.findViewById<ImageView>(R.id.favorite_item)
-        fun bind(data: TopPicture) {
-            glideLoader.loadPicture(itemView.context, data.webformatURL, favoritesItem)
+        fun bind(data: FavoritesEntity?) {
+            glideLoader.loadPicture(itemView.context, data?.url, favoritesItem)
+            favoritesItem.setOnClickListener { startDescriptionActivityFromFavoriteActivity(data) }
         }
+    }
+
+    private fun startDescriptionActivityFromFavoriteActivity(picture: FavoritesEntity?) {
+        onFavoriteItemClickListener.onFavoriteItemClick(picture)
+    }
+
+    interface OnFavoriteItemClickListener {
+        fun onFavoriteItemClick(picture: FavoritesEntity?)
     }
 }

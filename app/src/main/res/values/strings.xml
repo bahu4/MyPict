@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">My Pict</string>
     <string name="add_to_favorites">Add to favorites</string>
+    <string name="added_to_favorites_toast_text">picture added to favorites</string>
 </resources>

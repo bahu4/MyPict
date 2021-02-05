@@ -2,6 +2,7 @@ package ru.bahu.mypict
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -35,7 +36,11 @@ class MainActivity : MvpAppCompatActivity(), MainView {
 
             override fun addToFavoritesClick(picture: TopPicture) {
                 mainPresenter.addToDB(picture)
-                Toast.makeText(this@MainActivity,"123", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    this@MainActivity,
+                    getString(R.string.added_to_favorites_toast_text),
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
 
@@ -43,6 +48,11 @@ class MainActivity : MvpAppCompatActivity(), MainView {
         App.appComponent.inject(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        var btn = findViewById<Button>(R.id.btn)
+        btn.setOnClickListener {
+            val intent = Intent(this, FavoritesActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     override fun renderData(data: List<TopPicture>) {
