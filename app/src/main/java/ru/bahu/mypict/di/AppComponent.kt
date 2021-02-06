@@ -1,9 +1,9 @@
 package ru.bahu.mypict.di
 
 import dagger.Component
-import ru.bahu.mypict.DetailActivity
-import ru.bahu.mypict.FavoritesActivity
-import ru.bahu.mypict.MainActivity
+import ru.bahu.mypict.ui.detail.DetailActivity
+import ru.bahu.mypict.ui.favorites.FavoritesActivity
+import ru.bahu.mypict.ui.main.MainActivity
 import javax.inject.Singleton
 
 @Component(

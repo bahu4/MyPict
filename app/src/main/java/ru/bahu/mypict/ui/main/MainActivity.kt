@@ -1,21 +1,24 @@
-package ru.bahu.mypict
+package ru.bahu.mypict.ui.main
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import moxy.MvpAppCompatActivity
 import moxy.presenter.InjectPresenter
 import moxy.presenter.ProvidePresenter
+import ru.bahu.mypict.presenter.MainPresenter
+import ru.bahu.mypict.R
 import ru.bahu.mypict.app.App
 import ru.bahu.mypict.glide.GlideLoader
 import ru.bahu.mypict.gson.TopPicture
+import ru.bahu.mypict.ui.detail.DetailActivity
+import ru.bahu.mypict.ui.favorites.FavoritesActivity
 import javax.inject.Inject
 
 class MainActivity : MvpAppCompatActivity(), MainView {
-
     @Inject
     lateinit var glideLoader: GlideLoader
 
@@ -48,8 +51,12 @@ class MainActivity : MvpAppCompatActivity(), MainView {
         App.appComponent.inject(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        var btn = findViewById<Button>(R.id.btn)
-        btn.setOnClickListener {
+        initFab()
+    }
+
+    private fun initFab() {
+        val fab = findViewById<FloatingActionButton>(R.id.fab)
+        fab.setOnClickListener {
             val intent = Intent(this, FavoritesActivity::class.java)
             startActivity(intent)
         }

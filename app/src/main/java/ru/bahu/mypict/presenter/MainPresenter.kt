@@ -1,4 +1,4 @@
-package ru.bahu.mypict
+package ru.bahu.mypict.presenter
 
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -11,6 +11,7 @@ import ru.bahu.mypict.gson.TopPicture
 import ru.bahu.mypict.repository.RepositoryImpl
 import ru.bahu.mypict.room.FavoritesDao
 import ru.bahu.mypict.room.FavoritesEntity
+import ru.bahu.mypict.ui.main.MainView
 import javax.inject.Inject
 
 @InjectViewState

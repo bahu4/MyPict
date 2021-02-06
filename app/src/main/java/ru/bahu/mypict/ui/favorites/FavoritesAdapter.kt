@@ -1,10 +1,11 @@
-package ru.bahu.mypict
+package ru.bahu.mypict.ui.favorites
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
+import ru.bahu.mypict.R
 import ru.bahu.mypict.glide.GlideLoader
 import ru.bahu.mypict.room.FavoritesEntity
 

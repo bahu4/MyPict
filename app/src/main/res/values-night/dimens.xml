@@ -2,4 +2,5 @@
 <resources>
     <dimen name="image_item_width">150dp</dimen>
     <dimen name="image_item_height">150dp</dimen>
+    <dimen name="item_layout_padding">10dp</dimen>
 </resources>

@@ -1,8 +1,9 @@
-package ru.bahu.mypict
+package ru.bahu.mypict.ui.detail
 
 import android.os.Bundle
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import ru.bahu.mypict.R
 import ru.bahu.mypict.app.App
 import ru.bahu.mypict.glide.GlideLoader
 import javax.inject.Inject

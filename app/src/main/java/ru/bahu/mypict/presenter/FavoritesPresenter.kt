@@ -1,4 +1,4 @@
-package ru.bahu.mypict
+package ru.bahu.mypict.presenter
 
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
@@ -7,6 +7,7 @@ import moxy.InjectViewState
 import moxy.MvpPresenter
 import ru.bahu.mypict.room.FavoritesDao
 import ru.bahu.mypict.room.FavoritesEntity
+import ru.bahu.mypict.ui.favorites.FavoritesView
 import javax.inject.Inject
 
 @InjectViewState

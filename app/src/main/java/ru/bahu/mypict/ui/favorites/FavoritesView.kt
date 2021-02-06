@@ -1,4 +1,4 @@
-package ru.bahu.mypict
+package ru.bahu.mypict.ui.favorites
 
 import moxy.MvpView
 import moxy.viewstate.strategy.AddToEndStrategy
