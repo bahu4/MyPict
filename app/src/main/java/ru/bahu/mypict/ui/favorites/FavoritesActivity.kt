@@ -58,7 +58,7 @@ class FavoritesActivity : MvpAppCompatActivity(), FavoritesView {
 
     override fun onSupportNavigateUp(): Boolean {
         super.onSupportNavigateUp()
-        finish()
+        finishAfterTransition()
         return true
     }
 
@@ -67,5 +67,10 @@ class FavoritesActivity : MvpAppCompatActivity(), FavoritesView {
         val favoritesAdapter = FavoritesAdapter(glideLoader, onFavoriteItemClickListener, data)
         favoritesRecyclerView.layoutManager = GridLayoutManager(this, 2)
         favoritesRecyclerView.adapter = favoritesAdapter
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finishAfterTransition()
     }
 }

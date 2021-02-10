@@ -10,6 +10,7 @@
         <item name="colorSecondaryVariant">@color/teal_700</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Customize your theme here. -->
+        <item name="colorSurface">?attr/colorPrimary</item>
         <item name="android:windowBackground">?attr/colorPrimary</item>
         <item name="android:windowFullscreen">true</item>
     </style>

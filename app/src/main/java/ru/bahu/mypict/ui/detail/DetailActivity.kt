@@ -23,4 +23,9 @@ class DetailActivity : AppCompatActivity() {
             detailImageView
         )
     }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finishAfterTransition()
+    }
 }

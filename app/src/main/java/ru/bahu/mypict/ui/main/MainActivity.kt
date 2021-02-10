@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import moxy.MvpAppCompatActivity
 import moxy.presenter.InjectPresenter
 import moxy.presenter.ProvidePresenter
@@ -55,7 +55,7 @@ class MainActivity : MvpAppCompatActivity(), MainView {
     }
 
     private fun initFab() {
-        val fab = findViewById<FloatingActionButton>(R.id.fab)
+        val fab = findViewById<ExtendedFloatingActionButton>(R.id.fab)
         fab.setOnClickListener {
             val intent = Intent(this, FavoritesActivity::class.java)
             startActivity(intent)
